@@ -8,13 +8,17 @@ import requests
 import json
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, renderer_classes
+from ratelimit.decorators import ratelimit
+
 
 
 def home(request):
     return HttpResponse("home page")
 
 # @api_view(('POST',))
+@ratelimit(key='ip', rate='5/m')
 @api_view(['POST', 'GET'])
+# @ratelimit(key='ip', rate='5/m')
 def index(request):
     title=""
     if request.method=='POST':
