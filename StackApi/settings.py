@@ -50,10 +50,18 @@ REST_FRAMEWORK = {
 
 CACHES = {
     'default': {
-        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
-        'LOCATION': 'Teamwave/StackApi/cache',
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'unique-snowflake',
     }
 }
+
+
+# CACHES = {
+#     'default': {
+#         'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+#         'LOCATION': 'Teamwave/StackApi/cache',
+#     }
+# }
 # CACHE_MIDDLEWARE_SECONDS = 30
 
 MIDDLEWARE = [
